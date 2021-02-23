@@ -5,14 +5,11 @@ import streamlit as st
 # input_model = open("catboost_model.pkl", "rb")
 # classifier = joblib.load(input_model)
 # classifier = st.cache(pd.read_csv)("football_data.csv")
-
-def model_loader(filename):
-    with open(filename, "rb") as input_model:
+@st.cache(allow_output_mutation=True, show_spinner=False)
+def model_loader():
+    with open("catboost_model.pkl", "rb") as input_model:
         classifier = joblib.load(input_model)
     return classifier
-
-
-st.cache(model_loader)("catboost_model.pkl")
 
 
 def time_extractor(time):
@@ -96,7 +93,7 @@ def predict_delay(time, carrier, destination, origin, month):
             description: The output values
 
     """
-    classifier = model_loader("catboost_model.pkl")
+    classifier = model_loader()
     to_predict = feature_creator(time, carrier, destination, origin, month)
     prediction = float(classifier.predict_proba([to_predict])[:, 1])
     return prediction
