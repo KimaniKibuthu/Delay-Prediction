@@ -1,8 +1,8 @@
-import joblib
+#import joblib
 import streamlit as st
 
-input_model = open("catboost_model.pkl", "rb")
-classifier = joblib.load(input_model)
+#input_model = open("catboost_model.pkl", "rb")
+#classifier = joblib.load(input_model)
 
 
 def time_extractor(time):
