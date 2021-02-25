@@ -3,7 +3,7 @@ This project aims at creatin an application that can assist in predicting flight
 
 To assist, there are three important files:
 * app.py
-* catboost_model.cbm
+* catboost_model.pkl
 
 ## Deploying the application
 The process is as follows:
